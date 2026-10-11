@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+
+  <title>Live Forex Dashboard | DollarAddict</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #080d18;
+      color: #f1f5f9;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 5%;
+      background: #0e1728;
+      border-bottom: 1px solid #243148;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: #2684ff;
+    }
+
+    .status {
+      color: #38d996;
+      font-size: 12px;
+    }
+
+    main {
+      max-width: 1500px;
+      margin: auto;
+      padding: 24px 4%;
+    }
+
+    h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .markets {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .market {
+      background: #111b2d;
+      border: 1px solid #243148;
+      padding: 16px;
+      border-radius: 12px;
+      min-width: 0;
+    }
+
+    .market h3 {
+      font-size: 14px;
+      margin: 0 0 8px;
+    }
+
+    .market p {
+      font-size: 12px;
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    .chart-box {
+      background: #111b2d;
+      border: 1px solid #243148;
+      border-radius: 12px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .chart-title {
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .tradingview-widget-container {
+      width: 100%;
+    }
+
+    .tradingview-widget-container__widget {
+      width: 100%;
+    }
+
+    .chart {
+      height: 560px;
+    }
+
+    .ticker {
+      margin-bottom: 24px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 16px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+
+      main {
+        padding: 20px 12px;
+      }
+
+      .markets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .chart {
+        height: 470px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">DOLLAR<span>ADDICT</span></div>
+    <div class="status">● MARKET DATA WIDGET</div>
+  </header>
+
+  <main>
+    <h1>Live Forex Dashboard</h1>
+    <p class="subtitle">
+      Follow the markets. Analyse the charts. Plan your next trade.
+    </p>
+
+    <div class="markets">
+      <div class="market">
+        <h3>GOLD · XAUUSD</h3>
+        <p>Gold against the US dollar</p>
+      </div>
+
+      <div class="market">
+        <h3>EURUSD</h3>
+        <p>Euro against the US dollar</p>
+      </div>
+
+      <div class="market">
+        <h3>GBPUSD</h3>
+        <p>British pound against the US dollar</p>
+      </div>
+
+      <div class="market">
+        <h3>BTCUSD</h3>
+        <p>Bitcoin against the US dollar</p>
+      </div>
+    </div>
+
+    <div class="ticker">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script
+          type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+          async>
+        {
+          "symbols": [
+            {"proName":"OANDA:XAUUSD","title":"Gold"},
+            {"proName":"FX:EURUSD","title":"EUR/USD"},
+            {"proName":"FX:GBPUSD","title":"GBP/USD"},
+            {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+            {"proName":"FX:USDJPY","title":"USD/JPY"}
+          ],
+          "showSymbolLogo": true,
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="chart-box">
+      <div class="chart-title">Gold Market Chart · XAUUSD</div>
+
+      <div class="chart">
+        <div class="tradingview-widget-container"
+             style="height:100%;width:100%">
+          <div class="tradingview-widget-container__widget"
+               style="height:calc(100% - 32px);width:100%">
+          </div>
+
+          <div style="font-size:11px;padding:5px;color:#94a3b8">
+            <a href="https://www.tradingview.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="color:#60a5fa">
+              Charts powered by TradingView
+            </a>
+          </div>
+
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+            async>
+          {
+            "autosize": true,
+            "symbol": "OANDA:XAUUSD",
+            "interval": "15",
+            "timezone": "Africa/Nairobi",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "allow_symbol_change": true,
+            "calendar": false,
+            "support_host": "https://www.tradingview.com"
+          }
+          </script>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    DollarAddict · Market analysis tools
+    <p>Market data may be delayed and may differ from your broker's prices.
+      This dashboard does not execute trades.</p>
+  </footer>
+</body>
+</html>
